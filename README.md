@@ -4,24 +4,27 @@ This document is a draft which contains ideas and first thoughts on how to build
 
 # Tools
 
-- Postres to store the tags
-- Hapi plugin structure
+- PostgreSQL to store the tags
+- Hapi plugin
 
 # MVP features
 
-- [ ] Initialise a tags table which contain all the tags. A json file can be used to create easily the first content of the table:
+- [ ] Initialise a "tags" table which contains all the tags. A json file can be used to create easily the first content of the table:
 
 ```
 [
-{
-  tag-name: 'documentation'
-},
-{
-  tag-name: 'question'
-},
-{
-  tag-name: 'bug'
-}
+  {
+    tag-name: 'documentation',
+    active: true
+  },
+  {
+    tag-name: 'question',
+    active: true
+  },
+  {
+    tag-name: 'bug',
+    active: true
+  }
 ]
 ```
 - [ ] Provide a addTag function to the Hapi route handlers:
@@ -37,7 +40,7 @@ function (request, reply) {
 }
 ```
 
-The addTag function will check if the 'type_element_tagged' already exists in Postgres and add a new entry which link the id of the element with the id of the tag.
+The addTag function will check if the 'type_element_tagged' already exists in PostgreSQL and add a new entry which link the id of the element with the id of the tag.
 
 - [ ] Provide a getTags function which get all the tags linked to an element:
 
@@ -49,7 +52,8 @@ In the Hapi handlers
 ```
 function (request, reply) {
   request.getTags('issue', '42', function (error, tags){
-     console.log(tags);  
+     console.log(tags);
+     return reply.view('issue', {listTags: tags});  
   })
 }
 ```
