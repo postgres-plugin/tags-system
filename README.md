@@ -58,6 +58,16 @@ function (request, reply) {
 }
 ```
 
+- [ ] Provide a getAllTags function which returns all the existing tags
+```
+function (request, reply) {
+  request.getAllTags(function (error, tags){
+     console.log(tags);
+     return reply.view('allTags', {listTags: tags});  
+  })
+}
+```
+
 # how
 
 - Install the package ```npm install tags-postgres --save```
@@ -93,5 +103,6 @@ where options is
 
 # Next iteration
 
+- Create categories which are a set of specific tags. The categories will have their own table in PostgreSQL and the tags can be linked to one or multiple categories
 
 - Create UI to add and delete tags instead of using a json config file. **This will require to have an authentication system to allow only specific users to modify the tags table.**
