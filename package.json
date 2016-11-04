@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ./example/start.js",
     "startmon": "nodemon ./example/server.js",
-    "test": "istanbul cover tape ./setup-test.js"
+    "test": "istanbul cover tape ./tests/setup-test.js"
   },
   "repository": {
     "type": "git",
