@@ -1,7 +1,8 @@
 'use strict';
+
 var Hapi = require('hapi');
 var server = new Hapi.Server();
-var Hoek = require('hoek')
+var Hoek = require('hoek');
 var tags = require('../');
 
 server.connection({ port: process.env.PORT || 3000 });
