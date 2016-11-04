@@ -1,6 +1,6 @@
 var Hapi = require('hapi');
 var Hoek = require('hoek');
-var tags = require('../');
+var tags = require('../lib/index.js');
 
 var server = new Hapi.Server();
 

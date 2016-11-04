@@ -1,5 +1,5 @@
 var tape = require('tape');
-var server = require('./example/server.js');
+var server = require('../example/server.js');
 
 tape('check that plugin is being attached to the request object', function(t) {
   server.inject({
