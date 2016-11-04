@@ -1,12 +1,7 @@
-
 const register = function (server, options, next) {
-  console.log('registering tags');
-  server.route({
-    method: 'GET',
-    path: '/test',
-    handler: function (request, reply) {
-        return reply('ok');
-    }
+  server.ext('onPreAuth', function(request, reply) {
+    request.jackmisawesome = 'Hello!';
+    reply.continue();
   });
 
   return next();
@@ -18,4 +13,4 @@ register.attributes = {
 };
 
 
-module.exports = register
+module.exports = register;
