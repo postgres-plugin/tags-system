@@ -1,5 +1,7 @@
-const register = function (server, options, next) {
-  server.ext('onPreAuth', function(request, reply) {
+'use strict';
+
+var register = function (server, options, next) {
+  server.ext('onPreAuth', function (request, reply) {
     request.jackmisawesome = 'Hello!';
     reply.continue();
   });
@@ -8,9 +10,8 @@ const register = function (server, options, next) {
 };
 
 register.attributes = {
-    name: 'tags',
-    version: '1.0.0'
+  name: 'tags',
+  version: '1.0.0'
 };
-
 
 module.exports = register;

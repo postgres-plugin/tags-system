@@ -6,6 +6,7 @@ This document is a draft which contains ideas and first thoughts on how to build
 
 - PostgreSQL to store the tags
 - Hapi plugin
+- [Good parts linter](https://github.com/dwyl/goodparts)
 
 # MVP features
 
