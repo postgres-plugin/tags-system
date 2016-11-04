@@ -12,7 +12,3 @@ tape('check that plugin is being attached to the request object', function(t) {
     t.end();
   });
 });
-
-tape.onFinish(function(){
-  server.stop(function() {});
-});
