@@ -10,11 +10,6 @@ server.register(tags, function (err) {
   Hoek.assert(!err, 'error registering plugin');
 });
 
-server.start(function (err) {
-  Hoek.assert(!err, 'error starting server');
-  console.log('Server running at port: ', server.info.uri);
-});
-
 server.route({
   method: 'GET',
   path: '/',
