@@ -1,7 +1,7 @@
 const register = function (server, options, next) {
   server.ext('onPreAuth', function(request, reply) {
     request.jackmisawesome = function() {
-      console.log('HI THERE');
+      return 'Abracadabra!';
     };
     reply.continue();
   });
