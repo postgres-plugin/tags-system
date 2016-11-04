@@ -7,6 +7,10 @@ This document is a draft which contains ideas and first thoughts on how to build
 - PostgreSQL to store the tags
 - Hapi plugin
 
+# Testing
+
+We are using Substack's [Tape module](https://github.com/substack/tape) to test our functionality.
+
 # MVP features
 
 - [ ] Initialise a "tags" table which contains all the tags. A json file can be used to create easily the first content of the table:
