@@ -13,4 +13,12 @@ server.register(tags, function (err) {
 server.start(function (err) {
   Hoek.assert(!err, 'error starting server');
   console.log('Server running at port: ', server.info.uri);
-})
+});
+
+server.route({
+  method: 'GET',
+  path: '/',
+  handler: function(request, reply) {
+    reply(request.jackmisawesome);
+  }
+});
