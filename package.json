@@ -1,0 +1,29 @@
+{
+  "name": "tags-system",
+  "version": "1.0.0",
+  "description": "This document is a draft which contains ideas and first thoughts on how to build a reusable tags-system.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./example/server.js",
+    "startmon": "nodemon ./example/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/SimonLab/tags-system.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SimonLab/tags-system/issues"
+  },
+  "homepage": "https://github.com/SimonLab/tags-system#readme",
+  "dependencies": {
+    "hapi": "^15.2.0",
+    "hoek": "^4.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
