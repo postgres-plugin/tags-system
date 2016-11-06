@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./example/start.js",
     "startmon": "nodemon ./example/server.js",
+    "lint": "node_modules/.bin/goodparts .",
     "test": "istanbul cover tape ./tests/setup-test.js"
   },
   "repository": {
@@ -26,6 +27,12 @@
     "tape": "^4.6.2"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0"
-  }
+    "goodparts": "^1.1.4",
+    "nodemon": "^1.11.0",
+    "pre-commit": "^1.1.3"
+  },
+  "pre-commit": [
+    "lint",
+    "test"
+  ]
 }

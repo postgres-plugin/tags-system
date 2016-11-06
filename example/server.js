@@ -1,10 +1,12 @@
+'use strict';
+
 var Hapi = require('hapi');
 var Hoek = require('hoek');
 var tags = require('../lib/index.js');
 
 var server = new Hapi.Server();
 
-server.connection({port: process.env.PORT || 3000});
+server.connection({ port: process.env.PORT || 3000 });
 
 server.register(tags, function (err) {
   Hoek.assert(!err, 'error registering plugin');
@@ -13,7 +15,7 @@ server.register(tags, function (err) {
 server.route({
   method: 'GET',
   path: '/',
-  handler: function(request, reply) {
+  handler: function (request, reply) {
     reply(request.jackmisawesome);
   }
 });
