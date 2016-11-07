@@ -81,7 +81,7 @@ Each tag will detail:
 
 | field  | data-type    |
 | --------------------- |
-| id     | serial       |
+| id     | integer      |
 | name   | varchar(50)  |
 | active | boolean      |
 
