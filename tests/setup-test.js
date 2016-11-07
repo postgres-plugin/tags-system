@@ -17,3 +17,9 @@ tape('check that plugin is being attached to the request object', function (t) {
     t.end();
   });
 });
+
+
+tape('teardown', function (t) {
+  server.app.pgConnection.done();
+  t.end();
+});

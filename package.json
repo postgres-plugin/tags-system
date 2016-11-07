@@ -24,6 +24,7 @@
     "hapi": "^15.2.0",
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
+    "pg": "^6.1.0",
     "tape": "^4.6.2"
   },
   "devDependencies": {
