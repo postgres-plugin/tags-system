@@ -4,3 +4,15 @@ CREATE TABLE IF NOT EXISTS tags (
   name VARCHAR(50) NOT NULL,
   active BOOLEAN NOT NULL
 );
+
+-- Check if a tag already exists in the table; add to table if not
+INSERT INTO tags (id, name, active)
+  SELECT id, name, active FROM tags
+  UNION --Combine the results of the above queries
+  VALUES (
+    000001,
+    'Member Type',
+    true
+  )
+  EXCEPT
+    SELECT id, name, active FROM tags;
