@@ -13,14 +13,23 @@ server.register([{
   register: tags,
   options: { tags: tagsData }
 }], function (err) {
-  Hoek.assert(!err, 'error registering plugin');
+  if (err) {
+    Hoek.assert(err);
+  }
 });
+
 
 server.route({
   method: 'GET',
   path: '/',
   handler: function (request, reply) {
-    reply(request.jackmisawesome);
+    server.app.tagsPool.connect(function (err, client, done) {
+      Hoek.assert(!err, err);
+      process.stdout.write('doing some nice stuff with the client\n');
+      done();
+
+      return reply(request.jackmisawesome);
+    });
   }
 });
 
