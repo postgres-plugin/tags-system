@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./example/start.js",
-    "startmon": "nodemon ./example/server.js",
+    "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
     "test": "istanbul cover tape ./tests/setup-test.js"
   },
@@ -21,7 +21,9 @@
   },
   "homepage": "https://github.com/SimonLab/tags-system#readme",
   "dependencies": {
+    "env2": "^2.1.1",
     "hapi": "^15.2.0",
+    "hapi-postgres-connection": "^6.1.0",
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
     "tape": "^4.6.2"
