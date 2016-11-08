@@ -14,7 +14,7 @@ We are using Substack's [Tape module](https://github.com/substack/tape) to test 
 
 # MVP features
 
-- [ ] Initialise a "tags" table which contains all the tags. A json file can be used to create easily the first content of the table:
+- [x] Initialise a "tags" table which will contain all the tags. The tags will be added from a json file with the following format:
 
 ```
 [

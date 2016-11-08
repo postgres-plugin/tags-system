@@ -6,6 +6,7 @@
   "scripts": {
     "start": "node ./example/start.js",
     "startmon": "nodemon ./example/server.js",
+    "db": "node lib/create-table.js",
     "lint": "node_modules/.bin/goodparts .",
     "test": "istanbul cover tape ./tests/setup-test.js"
   },
@@ -24,6 +25,7 @@
     "hapi": "^15.2.0",
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
+    "pg": "^6.1.0",
     "tape": "^4.6.2"
   },
   "devDependencies": {
