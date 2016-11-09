@@ -12,7 +12,7 @@ var tagsPool = new pg.Pool();
 
 
 function init (port, callback) {
-  server.connection({ port: process.env.PORT || port || 3000 });
+  server.connection({ port: port });
 
   server.register([{
     register: tags,
@@ -22,13 +22,12 @@ function init (port, callback) {
       return callback(err);
     }
 
-    server.route({
+    server.route([{
       method: 'GET',
       path: '/',
       handler: function (request, reply) {
         tagsPool.connect(function (connErr, client, done) {
           Hoek.assert(!connErr, connErr);
-          process.stdout.write('doing some nice stuff with the client\n');
           client.query('select * from tags', function (dberr, res) {
             Hoek.assert(!dberr, dberr);
             done();
@@ -37,7 +36,13 @@ function init (port, callback) {
           });
         });
       }
-    });
+    }, {
+      method: 'GET',
+      path: '/hello',
+      handler: function (request, reply) {
+        reply('hello');
+      }
+    }]);
 
     return callback(null, server);
   });

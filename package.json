@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./example/start.js",
-    "startmon": "nodemon ./example/server.js",
+    "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
     "test": "istanbul cover tape ./tests/setup-test.js"
   },

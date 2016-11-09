@@ -42,7 +42,8 @@ tape('set up server', function (t) {
       return t.fail();
     }
     server = newServer;
-    t.end();
+
+    return t.end();
   });
 });
 
