@@ -1,11 +1,13 @@
 'use strict';
 
 var tape = require('tape');
-// var Hoek = require('hoek');
-var init = require('../example/server.js').init;
-var tagsPool = require('../example/server.js').tagsPool;
+var init = require('../example/server.js');
+var tagsPool = require('../example/pg.js')();
 var tags = require('../example/tags.json');
 var server;
+
+// Tests assume we have a table called tags which is empty
+
 
 // First check that the DB is empty
 tape('check that the DB is empty', function (t) {
@@ -37,7 +39,7 @@ tape('check that the DB is empty', function (t) {
 
 // set up server
 tape('set up server', function (t) {
-  init(2000, function (err, newServer) {
+  init(2000, undefined, function (err, newServer) { // eslint-disable-line
     if (err) {
       return t.fail();
     }

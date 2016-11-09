@@ -3,30 +3,29 @@
 var Hapi = require('hapi');
 var Hoek = require('hoek');
 var fs = require('fs');
-var pg = require('pg');
 
 var server = new Hapi.Server();
 var tagsData = JSON.parse(fs.readFileSync('./example/tags.json').toString());
 var tags = require('../lib/index.js');
-var tagsPool = new pg.Pool();
+var tagsPool = require('./pg.js');
 
-
-function init (port, callback) {
+function init (port, pgConfig, callback) {
   server.connection({ port: port });
 
   server.register([{
     register: tags,
-    options: { tags: tagsData, tagsPool: tagsPool }
+    options: { tags: tagsData, tagsPool: tagsPool(pgConfig) }
   }], function (err) {
-    if (err) {
-      return callback(err);
-    }
+    Hoek.assert(!err, err);
+    // if (err) {
+    //   return callback(err);
+    // }
 
     server.route([{
       method: 'GET',
       path: '/',
       handler: function (request, reply) {
-        tagsPool.connect(function (connErr, client, done) {
+        tagsPool().connect(function (connErr, client, done) {
           Hoek.assert(!connErr, connErr);
           client.query('select * from tags', function (dberr, res) {
             Hoek.assert(!dberr, dberr);
@@ -36,12 +35,6 @@ function init (port, callback) {
           });
         });
       }
-    }, {
-      method: 'GET',
-      path: '/hello',
-      handler: function (request, reply) {
-        reply('hello');
-      }
     }]);
 
     return callback(null, server);
@@ -49,4 +42,4 @@ function init (port, callback) {
 }
 
 
-module.exports = { init: init, tagsPool: tagsPool };
+module.exports = init;
