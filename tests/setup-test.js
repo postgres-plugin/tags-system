@@ -7,6 +7,34 @@ var tagsPool = require('../example/server.js').tagsPool;
 var tags = require('../example/tags.json');
 var server;
 
+// First check that the DB is empty
+tape('check that the DB is empty', function (t) {
+  tagsPool.connect(function (conErr, client, done) {
+    if (conErr) {
+      t.fail();
+    }
+    t.equal(typeof client, 'object',
+      'We can connect to the db');
+
+    client.query('select * from tags;', function (dbErr, results) {
+      if (dbErr) {
+        return t.fail();
+      }
+
+      t.equal(typeof results.rows, 'object',
+        'we successfully connected to the tags table');
+
+      t.equal(results.rows.length, 0,
+        'The tags table has 0 rows');
+
+      t.end();
+
+      return done();
+    });
+  });
+});
+
+
 // set up server
 tape('set up server', function (t) {
   init(2000, function (err, newServer) {
@@ -18,26 +46,18 @@ tape('set up server', function (t) {
   });
 });
 
-// tape('check that the DB is empty', function (t) {
-//   tagsPool.connect(function (err, client, done) {
-//     Hoek.assert(!err, err);
-//     client.query('select * from tags;', function (dbErr, results) {
-//       Hoek.assert(!dbErr, dbErr);
-//       t.equal(results.rows.length, 0, 'The tags table has 0 rows');
-//       done();
-//       t.end();
-//     });
-//   });
-// });
-
 
 tape('check that plugin is being attached to the request object', function (t) {
   server.inject({
     method: 'GET',
     url: '/'
   }, function (res) {
-    t.equal(res.statusCode, 200, 'Looks for the endpoint where method is attached to request object.');
-    t.ok(JSON.parse(res.payload).length, tags.length, 'There are the correct number of tags in the DB after the plugin is added');
+    t.equal(res.statusCode, 200,
+      'Looks for the endpoint where method is attached to request object.');
+
+    t.ok(JSON.parse(res.payload).length, tags.length,
+      'There are the correct number of tags in the DB after plugin is added');
+
     t.end();
   });
 });
