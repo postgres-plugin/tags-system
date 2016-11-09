@@ -1,10 +1,22 @@
 'use strict';
 
 var tape = require('tape');
-var Hoek = require('hoek');
-var server = require('../example/server.js').server;
+// var Hoek = require('hoek');
+var init = require('../example/server.js').init;
 var tagsPool = require('../example/server.js').tagsPool;
 var tags = require('../example/tags.json');
+var server;
+
+// set up server
+tape('set up server', function (t) {
+  init(2000, function (err, newServer) {
+    if (err) {
+      return t.fail();
+    }
+    server = newServer;
+    t.end();
+  });
+});
 
 // tape('check that the DB is empty', function (t) {
 //   tagsPool.connect(function (err, client, done) {
