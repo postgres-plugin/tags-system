@@ -5,9 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "node ./example/start.js",
-    "startmon": "nodemon ./example/server.js",
+    "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
-    "test": "istanbul cover tape ./tests/setup-test.js"
+    "coverage": "istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
+    "test": "istanbul cover tape ./tests/setup-test.js | node_modules/tap-spec/bin/cmd.js"
   },
   "repository": {
     "type": "git",
@@ -36,6 +37,7 @@
   },
   "pre-commit": [
     "lint",
-    "test"
+    "test",
+    "coverage"
   ]
 }
