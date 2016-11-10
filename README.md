@@ -11,6 +11,8 @@ This document is a draft which contains ideas and first thoughts on how to build
 # Testing
 
 We are using Substack's [Tape module](https://github.com/substack/tape) to test our functionality.
+- Istanbul, Travis, Codecov are tools we are using
+- 100% coverage for statements functions lines branches
 
 # MVP features
 
