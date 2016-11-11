@@ -5,6 +5,15 @@ var init = require('../example/server.js');
 var tags = require('../example/tags.json');
 var server, tagsPool;
 
+var config = {
+  user: 'postgres',
+  database: 'tags',
+  password: '',
+  host: 'localhost',
+  port: 5432,
+  max: 10,
+  idleTimeoutMillis: 30000
+};
 // Tests assume we have a table called tags which is empty
 
 
@@ -38,7 +47,7 @@ var server, tagsPool;
 
 // set up server
 tape('set up server', function (t) {
-  init(2000, undefined, function (err, newServer, newTagsPool) { // eslint-disable-line
+  init(2000, config, function (err, newServer, newTagsPool) { // eslint-disable-line
     if (err) {
       return t.fail();
     }
