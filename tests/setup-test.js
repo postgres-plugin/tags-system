@@ -5,14 +5,22 @@ var init = require('../example/server.js');
 var tags = require('../example/tags.json');
 var server, tagsPool;
 
+// var config = {
+//   user: 'postgres',
+//   database: 'tags',
+//   password: '',
+//   host: 'localhost',
+//   port: 5432,
+//   max: 10,
+//   idleTimeoutMillis: 30000
+// };
 var config = {
-  user: 'postgres',
-  database: 'tags',
-  password: '',
-  host: 'localhost',
+  user: 'bob',
+  database: 'testtags',
+  password: '123',
   port: 5432,
   max: 10,
-  idleTimeoutMillis: 30000
+  idleTimeoutMillis: 1
 };
 // Tests assume we have a table called tags which is empty
 

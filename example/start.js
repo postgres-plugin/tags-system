@@ -13,7 +13,6 @@ var config = {
   idleTimeoutMillis: 30000
 };
 
-
 init(process.env.PORT || 3000, config, function (err, server) { // eslint-disable-line
   Hoek.assert(!err, err);
 
