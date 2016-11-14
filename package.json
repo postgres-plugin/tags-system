@@ -9,7 +9,7 @@
     "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
     "coverage": "istanbul check-coverage --statements 100 --functions 100 --lines 100 --branches 100",
-    "test": "istanbul cover tape ./tests/setup-test.js | node_modules/tap-spec/bin/cmd.js"
+    "test": "istanbul cover tape ./tests/*.test.js | node_modules/tap-spec/bin/cmd.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/SimonLab/tags-system#readme",
   "dependencies": {
+    "env2": "^2.1.1",
     "hapi": "^15.2.0",
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
