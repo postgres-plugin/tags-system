@@ -1,8 +1,10 @@
 'use strict';
 
 var Hoek = require('hoek');
-var server = require('./server.js');
+var init = require('./server.js');
+var config = require('../config/load-config.js');
 
-server.start(function (err) {
-  Hoek.assert(!err, 'error starting server');
+init(process.env.PORT || 3000, config, function (err, server) {
+  Hoek.assert(!err, err);
+  process.stdout.write('server listening on port ' + server.info.uri + '\n');
 });

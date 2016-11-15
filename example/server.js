@@ -1,23 +1,43 @@
 'use strict';
 
 var Hapi = require('hapi');
-var Hoek = require('hoek');
+var fs = require('fs');
+
+var tagsData = JSON.parse(fs.readFileSync('./example/tags.json').toString());
 var tags = require('../lib/index.js');
+var pg = require('pg');
 
-var server = new Hapi.Server();
+function init (port, pgConfig, callback) {
+  var server = new Hapi.Server();
+  var tagsPool = new pg.Pool(pgConfig);
 
-server.connection({ port: process.env.PORT || 3000 });
+  server.connection({ port: port });
 
-server.register(tags, function (err) {
-  Hoek.assert(!err, 'error registering plugin');
-});
+  server.register([{
+    register: tags,
+    options: {
+      tags: tagsData,
+      tagsPool: tagsPool,
+      databaseName: pgConfig.database
+    }
+  }], function (err) {
+    if (err) {
+      return callback(err);
+    }
+    server.route([{
+      method: 'GET',
+      path: '/',
+      handler: function (request, reply) {
+        request.getTags(function (error, listTags) { //eslint-disable-line
+          return reply(listTags);
+        });
+      }
+    }]);
 
-server.route({
-  method: 'GET',
-  path: '/',
-  handler: function (request, reply) {
-    reply(request.jackmisawesome);
-  }
-});
+    return server.start(function (errorStart) {
+      return callback(errorStart, server, tagsPool);
+    });
+  });
+}
 
-module.exports = server;
+module.exports = init;
