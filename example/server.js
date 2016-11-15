@@ -28,13 +28,9 @@ function init (port, pgConfig, callback) {
       method: 'GET',
       path: '/',
       handler: function (request, reply) {
-        var allTags = request.getTags(function (error, listTags) {
-          console.log(error);
-          console.log('############');
-          console.log(listTags);
+        request.getTags(function (error, listTags) { //eslint-disable-line
           return reply(listTags);
         });
-
       }
     }]);
 
