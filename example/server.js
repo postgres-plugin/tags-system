@@ -1,9 +1,9 @@
 'use strict';
 
 var Hapi = require('hapi');
-var fs = require('fs');
 
-var tagsData = JSON.parse(fs.readFileSync('./example/tags.json').toString());
+var tagsData = require('./tags.json');
+var categoriesData = require('./categories.json');
 var tags = require('../lib/index.js');
 var pg = require('pg');
 
@@ -17,6 +17,7 @@ function init (port, pgConfig, callback) {
     register: tags,
     options: {
       tags: tagsData,
+      categories: categoriesData,
       pool: tagsPool,
       databaseName: pgConfig.database
     }
