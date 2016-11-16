@@ -1,4 +1,6 @@
 # tags-system
+[![Build Status](https://travis-ci.org/postgres-plugin/tags-system.svg?branch=master)](https://travis-ci.org/postgres-plugin/tags-system)
+[![codecov](https://codecov.io/gh/postgres-plugin/tags-system/branch/master/graph/badge.svg)](https://codecov.io/gh/postgres-plugin/tags-system)
 
 This document is a draft which contains ideas and first thoughts on how to build a reusable tags-system.
 

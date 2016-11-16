@@ -1,5 +1,4 @@
 -- Delete table
-
 DROP TABLE IF EXISTS tags;
 
 -- Create table
