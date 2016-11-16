@@ -2,16 +2,27 @@
   {
     "id": 2,
     "name": "frank",
-    "active": true
+    "active": true,
+    "categories": [
+      1,
+      2
+    ]
   },
   {
     "id": 3,
     "name": "flop",
-    "active": true
+    "active": true,
+    "categories": [
+      1
+    ]
   },
   {
     "id": 4,
     "name": "flip",
-    "active": true
+    "active": true,
+    "categories": [
+      1,
+      3
+    ]
   }
 ]
