@@ -18,8 +18,7 @@ function init (port, pgConfig, callback) {
     options: {
       tags: tagsData,
       categories: categoriesData,
-      pool: tagsPool,
-      databaseName: pgConfig.database
+      pool: tagsPool
     }
   }], function (err) {
     if (err) {
