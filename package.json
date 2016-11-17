@@ -1,8 +1,8 @@
 {
   "name": "tags-system",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "This document is a draft which contains ideas and first thoughts on how to build a reusable tags-system.",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "start": "node ./example/start.js",
     "db": "node lib/create-table.js",
@@ -28,7 +28,8 @@
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
     "pg": "^6.1.0",
-    "pg-helpers": "0.0.1",
+    "pg-escape": "^0.2.0",
+    "pg-helpers": "0.0.3",
     "tape": "^4.6.2"
   },
   "devDependencies": {
