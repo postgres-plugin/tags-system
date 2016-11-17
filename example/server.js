@@ -7,11 +7,11 @@ var categoriesData = require('./categories.json');
 var tags = require('../lib/index.js');
 var pg = require('pg');
 
-function init (port, pgConfig, callback) {
+function init (config, callback) {
   var server = new Hapi.Server();
-  var tagsPool = new pg.Pool(pgConfig);
+  var tagsPool = new pg.Pool(config.pg);
 
-  server.connection({ port: port });
+  server.connection({ port: config.port });
 
   server.register([{
     register: tags,
@@ -32,11 +32,17 @@ function init (port, pgConfig, callback) {
           return reply(listTags);
         });
       }
+    }, {
+      method: 'GET',
+      path: '/getAllActive',
+      handler: function (request, reply) {
+        request.getAllActive(function (error, allTags) { //eslint-disable-line
+          return reply(allTags);
+        });
+      }
     }]);
 
-    return server.start(function (errorStart) {
-      return callback(errorStart, server, tagsPool);
-    });
+    return callback(null, server, tagsPool);
   });
 }
 

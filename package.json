@@ -9,7 +9,7 @@
     "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
     "coverage": "istanbul check-coverage",
-    "test": "istanbul cover tape \"./tests/*.test.js\" | node_modules/tap-spec/bin/cmd.js"
+    "test": "NODE_ENV=test istanbul cover tape \"./tests/*.test.js\" | node_modules/tap-spec/bin/cmd.js"
   },
   "repository": {
     "type": "git",
@@ -33,7 +33,7 @@
     "tape": "^4.6.2"
   },
   "devDependencies": {
-    "goodparts": "^1.1.4",
+    "goodparts": "^1.2.0",
     "nodemon": "^1.11.0",
     "pre-commit": "^1.1.3",
     "tap-spec": "^4.1.1"
