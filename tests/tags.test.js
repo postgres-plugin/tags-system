@@ -6,7 +6,7 @@ var tags = require('../example/tags.json');
 var config = require('../config/load-config.js');
 
 test('Server start without any error', function (t) {
-  init(0, config, function (err, server, pool) {
+  init(config, function (err, server, pool) {
     if (err) {
       return t.fail();
     }
@@ -18,7 +18,7 @@ test('Server start without any error', function (t) {
 });
 
 test('The list of tags is return on the / endpoint', function (t) {
-  init(0, config, function (err, server, pool) {
+  init(config, function (err, server, pool) {
     if (err) {
       return t.fail();
     }
