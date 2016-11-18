@@ -1,6 +1,6 @@
 {
   "name": "tags-system",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "This document is a draft which contains ideas and first thoughts on how to build a reusable tags-system.",
   "main": "lib/index.js",
   "scripts": {
