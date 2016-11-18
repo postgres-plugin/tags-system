@@ -12,7 +12,7 @@ addons:
 services:
   - postgresql
 before_script:
-  - psql -c 'create database tags;' -U postgres
+  - psql -c 'create database tags_test;' -U postgres
 before_install:
   - pip install --user codecov
   - $CXX --version

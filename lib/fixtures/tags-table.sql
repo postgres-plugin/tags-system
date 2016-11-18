@@ -1,7 +1,7 @@
 -- Delete table
 DROP TABLE IF EXISTS tags_categories;
-DROP TABLE IF EXISTS tags;
-DROP TABLE IF EXISTS categories;
+DROP TABLE IF EXISTS tags cascade;
+DROP TABLE IF EXISTS categories cascade;
 
 -- Create table tags
 CREATE TABLE IF NOT EXISTS tags (
