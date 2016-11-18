@@ -10,7 +10,11 @@ test('getAllActive function', function (t) {
     Hoek.assert(!err, 'server setup error');
 
     server.inject({ url: '/getAllActive' }, function (res) {
-      t.ok(JSON.parse(res.payload).length > 4, 'more than 4 items');
+      var allActiveObj = JSON.parse(res.payload);
+
+      t.deepEqual(Object.keys(allActiveObj[1].tags),
+        ['2', '3', '4'],
+        'more than 4 items');
 
       return pool.end(function () {
         server.stop(t.end);

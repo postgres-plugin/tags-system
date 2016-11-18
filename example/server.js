@@ -28,7 +28,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/',
       handler: function (request, reply) {
-        request.getTags(function (error, listTags) { //eslint-disable-line
+        request.pg.tags.getTags(function (error, listTags) { //eslint-disable-line
           return reply(listTags);
         });
       }
@@ -36,7 +36,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/getAllActive',
       handler: function (request, reply) {
-        request.getAllActive(function (error, allTags) { //eslint-disable-line
+        request.pg.tags.getAllActive(function (error, allTags) { //eslint-disable-line
           return reply(allTags);
         });
       }
