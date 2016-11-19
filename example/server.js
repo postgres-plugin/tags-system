@@ -48,6 +48,13 @@ function init (config, callback) {
           return reply(added);
         });
       }
+    }, {
+      method: 'GET',
+      path: '/getByTag',
+      handler: function (request, reply) {
+        // console.log(request.query.type, request.query.tag);
+        return reply('hello');
+      }
     }
     ]);
 
