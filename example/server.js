@@ -40,7 +40,16 @@ function init (config, callback) {
           return reply(allTags);
         });
       }
-    }]);
+    }, {
+      method: 'GET',
+      path: '/addTags',
+      handler: function (request, reply) {
+        request.pg.tags.addTags('challenges', 1, [1, 2],function (error, added) { //eslint-disable-line
+          return reply(added);
+        });
+      }
+    }
+    ]);
 
     return callback(null, server, tagsPool);
   });
