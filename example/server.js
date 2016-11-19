@@ -1,6 +1,7 @@
 'use strict';
 
 var Hapi = require('hapi');
+var Hoek = require('hoek');
 
 var tagsData = require('./tags.json');
 var categoriesData = require('./categories.json');
@@ -44,7 +45,9 @@ function init (config, callback) {
       method: 'GET',
       path: '/addTags',
       handler: function (request, reply) {
-        request.pg.tags.addTags('challenges', 1, [1, 2],function (error, added) { //eslint-disable-line
+        request.pg.tags.addTags('challenges', 1, [1, 2], function (error, added) { //eslint-disable-line
+          Hoek.assert(!error, error);
+
           return reply(added);
         });
       }

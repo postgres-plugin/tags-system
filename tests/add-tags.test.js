@@ -5,8 +5,8 @@ var addTags = require('../lib/queries/add-tags.js');
 var init = require('../example/server.js');
 var config = require('../config/load-config.js');
 var createChallenges = require('./helpers/create-challenges.js');
-var tagsData = require('../example/tags.json');
-var categoriesData = require('../example/categories.json');
+var tagsData = require('./helpers/fixtures/tags.json');
+var categoriesData = require('./helpers/fixtures/categories.json');
 
 test('addTags function formats a valid query string', function (t) {
   var actual = addTags('challenges', 0, [0, 3, 9]);
@@ -20,16 +20,16 @@ test('addTags function formats a valid query string', function (t) {
 test('Create tags_challenges and add tags', function (t) {
   config.tagsData = tagsData;
   config.categoriesData = categoriesData;
+
   init(config, function (err, server, pool) {
     if (err) {
       return t.fail(err);
     }
 
     return createChallenges(pool, function (error) {
-      console.log(error);
-      t.ok(!error, 'no error when creating challenges table');
+      t.ok(!error, 'error when creating challenges table: ' + error);
       server.inject({ url: '/addTags' }, function (res) {
-        t.ok(res.payload === '[]', 'Tags added to tags_challenges');
+        t.equal(res.payload, '[]', 'Tags added to tags_challenges');
 
         return pool.end(function () { // eslint-disable-line
           server.stop(t.end);
