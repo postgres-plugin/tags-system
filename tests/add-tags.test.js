@@ -22,12 +22,14 @@ test('Create tags_challenges and add tags', function (t) {
     }
 
     return createChallenges(pool, function (error) {
+      console.log(error);
       t.ok(!error, 'no error when creating challenges table');
       server.inject({ url: '/addTags' }, function (res) {
         t.ok(res.payload === '[]', 'Tags added to tags_challenges');
-        t.end();
 
-        return pool.end(server.stop);
+        return pool.end(function () { // eslint-disable-line
+          server.stop(t.end);
+        });
       });
     });
   });
