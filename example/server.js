@@ -55,8 +55,11 @@ function init (config, callback) {
       method: 'GET',
       path: '/getByTag',
       handler: function (request, reply) {
-        // console.log(request.query.type, request.query.tag);
-        return reply('hello');
+        request.pg.tags.getChallengesByTag(request.query.tags, function (error, challenges) { //eslint-disable-line
+          Hoek.assert(!error, error);
+
+          return reply(challenges);
+        });
       }
     }
     ]);
