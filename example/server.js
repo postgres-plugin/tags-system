@@ -16,8 +16,8 @@ function init (config, callback) {
   server.register([{
     register: tags,
     options: {
-      tags: tagsData,
-      categories: categoriesData,
+      tags: config.tagsData || tagsData,
+      categories: config.categoriesData || categoriesData,
       pool: tagsPool
     }
   }], function (err) {

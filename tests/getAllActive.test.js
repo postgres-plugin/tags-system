@@ -4,8 +4,12 @@ var Hoek = require('hoek');
 var test = require('tape');
 var init = require('../example/server.js');
 var config = require('../config/load-config.js');
+var tagsData = require('../example/tags.json');
+var categoriesData = require('../example/categories.json');
 
 test('getAllActive function', function (t) {
+  config.tagsData = tagsData;
+  config.categoriesData = categoriesData;
   init(config, function (err, server, pool) {
     Hoek.assert(!err, 'server setup error');
 
