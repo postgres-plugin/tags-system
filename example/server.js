@@ -11,6 +11,9 @@ function init (config, callback) {
   var server = new Hapi.Server();
   var tagsPool = new pg.Pool(config.pg);
 
+  tagsPool.on('error', function () {
+    console.log('Pool error'); // eslint-disable-line
+  });
   server.connection({ port: config.port });
 
   server.register([{

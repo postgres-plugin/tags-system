@@ -17,6 +17,19 @@ test('Server start without any error', function (t) {
   });
 });
 
+test('Server stop if pool not ready', function (t) {
+  var originalUser = config.pg.user;
+
+  config.pg.user = 'impossibleUser';
+  init(config, function (err) {
+    if (err) {
+      t.ok(err, 'Attempt to initialise the database with a wrong pool');
+      t.end();
+      config.pg.user = originalUser;
+    }
+  });
+});
+
 test('The list of tags is return on the / endpoint', function (t) {
   init(config, function (err, server, pool) {
     if (err) {
