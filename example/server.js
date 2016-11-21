@@ -61,6 +61,19 @@ function init (config, callback) {
           return reply(challenges);
         });
       }
+    }, {
+      method: 'GET',
+      path: '/getTagsForEdit',
+      handler: function (request, reply) {
+        var table = request.query.tableName;
+        var id = request.query.id;
+
+        request.pg.tags.getTagsForEdit(table, id, function (error, allTags) { //eslint-disable-line
+          Hoek.assert(!error, error);
+
+          return reply(allTags);
+        });
+      }
     }
     ]);
 
