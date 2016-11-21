@@ -29,7 +29,8 @@ INSERT INTO challenges (
   ( 5, 'sixth challenge', 'sixth description', '2016-01-01', 1, 1, false )
 ;
 
-INSERT INTO tags_challenges (tags_id, challenges_id) VALUES (1, 0),(2, 0),(3, 0),(2, 1),(4, 1),(3, 2),(4, 2);
--- Challenge 0 linked to 1, 2, 3
--- Challenge 1 linked to 2, 4
--- Challenge 2 linked to 1, 2, 3, 4
+INSERT INTO tags_challenges (tags_id, challenges_id) VALUES
+  (1, 0),(2, 0),(3, 0),   -- Challenge 0 linked to 1, 2, 3
+  (2, 1),(4, 1),          -- Challenge 1 linked to 2, 4
+  (3, 2),(4, 2),          -- Challenge 2 linked to 3, 4
+  (1, 3),(4, 3),(5, 3);   -- Challenge 3 linked to 1, 4, 5

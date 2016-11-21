@@ -5,10 +5,13 @@ var test = require('tape');
 var config = require('../config/load-config.js');
 var init = require('../example/server.js');
 
-config.tagsData = require('./helpers/fixtures/tags.json');
-config.categoriesData = require('./helpers/fixtures/categories.json');
+var tagsData = require('./helpers/fixtures/tags.json');
+var categoriesData = require('./helpers/fixtures/categories.json');
 
 test('get all challenges with tag id 2 attached using getByTag function', function (t) { //eslint-disable-line
+  config.tagsData = tagsData;
+  config.categoriesData = categoriesData;
+
   init(config, function (error, server, pool) {
     var options = { url: '/getByTag?tags=2' };
 
