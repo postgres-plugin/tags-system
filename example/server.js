@@ -53,16 +53,6 @@ function init (config, callback) {
       }
     }, {
       method: 'GET',
-      path: '/getByTag',
-      handler: function (request, reply) {
-        request.pg.tags.getChallengesByTag(request.query.tags, function (error, challenges) { //eslint-disable-line
-          Hoek.assert(!error, error);
-
-          return reply(challenges);
-        });
-      }
-    }, {
-      method: 'GET',
       path: '/getTagsForEdit',
       handler: function (request, reply) {
         var table = request.query.tableName;
