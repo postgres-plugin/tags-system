@@ -23,10 +23,10 @@ tags-system is an Hapi plugin which allow you to use tags on your application. W
 ### tags_categories
 
 
-| field  | data-type     |
-| ---------------------- |
-| id_tag       | integer |
-| id_category  | integer |
+| field    | data-type     |
+| ------------------------ |
+| tags_id        | integer |
+| categories_id  | integer |
 
 The tags-system plugin take also an option where the content of these tables can be passed. This allow to initialise quickly the tables:
 

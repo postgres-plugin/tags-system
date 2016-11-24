@@ -1,20 +1,20 @@
 -- Create table tags
 CREATE TABLE IF NOT EXISTS tags (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   active BOOLEAN NOT NULL
 );
 
 -- Create table categories
 CREATE TABLE IF NOT EXISTS categories (
-  id INTEGER PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
   name VARCHAR(50) NOT NULL,
   active BOOLEAN NOT NULL
 );
 
 -- Create table tags-category
 CREATE TABLE IF NOT EXISTS tags_categories (
-  id_tag INTEGER REFERENCES tags (id),
-  id_category INTEGER REFERENCES categories (id),
-  PRIMARY KEY (id_tag, id_category)
+  tags_id INTEGER REFERENCES tags (id),
+  categories_id INTEGER REFERENCES categories (id),
+  PRIMARY KEY (tags_id, categories_id)
 );

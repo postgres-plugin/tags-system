@@ -2,6 +2,8 @@
 
 var Hapi = require('hapi');
 
+var tagsData = require('./data/tags.json');
+var categoriesData = require('./data/categories.json');
 var tags = require('../lib/index.js');
 var pg = require('pg');
 
@@ -11,8 +13,8 @@ function init (config, callback) {
   var optionsTags = {
     reset: Boolean(process.env.RESET_TABLES_TAGS), // reset with content passed in the options, change the env to true and restart to add content
     pool: pool,
-    tags: [],
-    categories: []
+    tags: tagsData,
+    categories: categoriesData
   };
 
   pool.on('error', function () {
