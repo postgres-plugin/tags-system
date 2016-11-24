@@ -2,7 +2,7 @@
 
 var test = require('tape');
 var init = require('../example/server.js');
-var tags = require('../example/tags.json');
+var tags = require('../example/data/tags.json');
 var config = require('../config/load-config.js');
 
 test('Server start without any error', function (t) {

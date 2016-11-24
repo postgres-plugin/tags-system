@@ -2,27 +2,29 @@
 
 var Hapi = require('hapi');
 
-var tagsData = require('./tags.json');
-var categoriesData = require('./categories.json');
+var tagsData = require('./data/tags.json');
+var categoriesData = require('./data/categories.json');
 var tags = require('../lib/index.js');
 var pg = require('pg');
 
 function init (config, callback) {
   var server = new Hapi.Server();
-  var tagsPool = new pg.Pool(config.pg);
+  var pool = new pg.Pool(config.pg);
+  var optionsTags = {
+    reset: Boolean(process.env.RESET_TABLES_TAGS), // reset with content passed in the options, change the env to true and restart to add content
+    pool: pool,
+    tags: tagsData,
+    categories: categoriesData
+  };
 
-  tagsPool.on('error', function () {
+  pool.on('error', function () {
     console.log('Pool error'); // eslint-disable-line
   });
   server.connection({ port: config.port });
 
   server.register([{
     register: tags,
-    options: {
-      tags: tagsData,
-      categories: categoriesData,
-      pool: tagsPool
-    }
+    options: optionsTags
   }], function (err) {
     if (err) {
       return callback(err);
@@ -54,7 +56,7 @@ function init (config, callback) {
     }
     ]);
 
-    return callback(null, server, tagsPool);
+    return callback(null, server, pool);
   });
 }
 
