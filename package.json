@@ -1,6 +1,6 @@
 {
   "name": "tags-system",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "A reusable tags system.",
   "main": "lib/index.js",
   "scripts": {
@@ -9,7 +9,7 @@
     "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
     "coverage": "istanbul check-coverage",
-    "test": "NODE_ENV=test istanbul cover tape \"./tests/*.test.js\" | node_modules/tap-spec/bin/cmd.js"
+    "test": "NODE_ENV=test istanbul cover tape \"./tests/**/*.test.js\" | node_modules/tap-spec/bin/cmd.js"
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,10 @@
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
     "pg": "^6.1.0",
+    "pg-challenges": "^2.0.4",
     "pg-escape": "^0.2.0",
     "pg-helpers": "0.0.3",
+    "pg-people": "0.0.6",
     "tape": "^4.6.2"
   },
   "devDependencies": {

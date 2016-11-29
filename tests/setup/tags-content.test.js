@@ -1,7 +1,7 @@
 'use strict';
 
 var test = require('tape');
-var tagsContent = require('../lib/fixtures/tags-data.js');
+var tagsContent = require('../../lib/fixtures/tags-data.js');
 
 test('The tags content is empty if no tags', function (t) {
   var result = tagsContent([]);

@@ -39,7 +39,46 @@ The tags-system plugin take also an option where the content of these tables can
 }
 ```
 
-# Fonctionalities
+# Functions
+
+### _getAllActive(cb)_
+returns a parent array of active categories containing child arrays of active child tags.
+Each member of the parent array is of the form:
+```js
+{ category_id: 9,
+  category_name: 'BIOLOGICAL CYCLE',
+  tags:
+  [ { tag_id: 87, tag_name: 'Agriculture',              selected: false },
+    { tag_id: 89, tag_name: 'Anaerobic digestion',      selected: false },
+    { tag_id: 91, tag_name: 'Biochemical extraction',   selected: false  }
+]
+}
+```
+The categories array and the inner tags array are ordered alphabetically.
+If no categories or tags are found, it will return an empty array.
+"selected" will always be false when using _getAllActive_
+
+
+
+### _getTagsForEdit(tableName, id, cb)_
+Similar to _getAllActive_ function.
+At the moment, tableName can be 'challenges', in the future we will be able to call it with 'organisations'
+returns an array of active categories and active child tags with objects of the form:
+```js
+{ category_id: 9,
+  category_name: 'BIOLOGICAL CYCLE',
+  tags:
+  [ { tag_id: 87, tag_name: 'Agriculture',              selected: false },
+    { tag_id: 89, tag_name: 'Anaerobic digestion',      selected: false },
+    { tag_id: 91, tag_name: 'Biochemical extraction',   selected: true  }
+  ]
+}
+```
+The categories array and the inner tags array are ordered alphabetically.
+If no categories or tags are found, it will return an empty array.
+
+
+
 
 # how
 

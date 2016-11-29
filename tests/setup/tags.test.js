@@ -1,9 +1,9 @@
 'use strict';
 
 var test = require('tape');
-var init = require('../example/server.js');
-var tags = require('../example/data/tags.json');
-var config = require('../config/load-config.js');
+var init = require('../../example/server.js');
+var tags = require('../../example/data/tags.json');
+var config = require('../../config/load-config.js');
 
 test('Server start without any error', function (t) {
   init(config, function (err, server, pool) {
