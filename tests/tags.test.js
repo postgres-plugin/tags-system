@@ -17,6 +17,7 @@ test('Server start without any error', function (t) {
   });
 });
 
+// this test throws an error.
 test('Server stop if pool not ready', function (t) {
   var originalUser = config.pg.user;
 
