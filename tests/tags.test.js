@@ -2,7 +2,7 @@
 
 var test = require('tape');
 var init = require('../example/server.js');
-var tags = require('../example/tags.json');
+var tags = require('../example/data/tags.json');
 var config = require('../config/load-config.js');
 
 test('Server start without any error', function (t) {
@@ -14,6 +14,20 @@ test('Server start without any error', function (t) {
     return pool.end(function () {
       server.stop(t.end);
     });
+  });
+});
+
+// this test throws an error.
+test('Server stop if pool not ready', function (t) {
+  var originalUser = config.pg.user;
+
+  config.pg.user = 'impossibleUser';
+  init(config, function (err) {
+    if (err) {
+      t.ok(err, 'Attempt to initialise the database with a wrong pool');
+      t.end();
+      config.pg.user = originalUser;
+    }
   });
 });
 

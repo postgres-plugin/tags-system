@@ -23,18 +23,18 @@ tags-system is an Hapi plugin which allow you to use tags on your application. W
 ### tags_categories
 
 
-| field  | data-type     |
-| ---------------------- |
-| id_tag       | integer |
-| id_category  | integer |
+| field    | data-type     |
+| ------------------------ |
+| tags_id        | integer |
+| categories_id  | integer |
 
 The tags-system plugin take also an option where the content of these tables can be passed. This allow to initialise quickly the tables:
 
 ### plugin options:
 ```
 {
-  tags: require('./tags.json') // the json file which Initialise the tags database
-  categories: require(./categories.json) // the json file which Initialise the categories
+  tags: require('./data/tags.json') // the json file which Initialise the tags database
+  categories: require(./data/categories.json) // the json file which Initialise the categories
   pool: the_postgres_pool
 }
 ```
