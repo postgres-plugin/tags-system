@@ -101,16 +101,6 @@ function init (config, callback) {
               return reply(added);
             });
           }
-        }, {
-          method: 'GET',
-          path: '/getByTag',
-          handler: function (request, reply) {
-            request.server.methods.pg.tags.getChallengesByTag(request.query.tags, function (error, challenges) { //eslint-disable-line
-              Hoek.assert(!error, 'error /getByTag endpoint');
-
-              return reply(challenges);
-            });
-          }
         }
         ]);
 
