@@ -3,24 +3,29 @@
 var Hapi = require('hapi');
 var Hoek = require('hoek');
 
-var tagsData = require('./tags.json');
-var categoriesData = require('./categories.json');
+var tagsData = require('./data/tags.json');
+var categoriesData = require('./data/categories.json');
 var tags = require('../lib/index.js');
 var pg = require('pg');
 
 function init (config, callback) {
   var server = new Hapi.Server();
-  var tagsPool = new pg.Pool(config.pg);
+  var pool = new pg.Pool(config.pg);
+  var optionsTags = {
+    reset: true,
+    pool: pool,
+    tags: tagsData,
+    categories: categoriesData
+  };
 
+  pool.on('error', function () {
+    console.log('Pool error'); // eslint-disable-line
+  });
   server.connection({ port: config.port });
 
   server.register([{
     register: tags,
-    options: {
-      tags: config.tagsData || tagsData,
-      categories: config.categoriesData || categoriesData,
-      pool: tagsPool
-    }
+    options: optionsTags
   }], function (err) {
     if (err) {
       return callback(err);
@@ -29,7 +34,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/',
       handler: function (request, reply) {
-        request.pg.tags.getTags(function (error, listTags) { //eslint-disable-line
+        request.server.methods.pg.tags.getTags(function (error, listTags) { //eslint-disable-line
           return reply(listTags);
         });
       }
@@ -37,7 +42,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/getAllActive',
       handler: function (request, reply) {
-        request.pg.tags.getAllActive(function (error, allTags) { //eslint-disable-line
+        request.server.methods.pg.tags.getAllActive(function (error, allTags) { //eslint-disable-line
           return reply(allTags);
         });
       }
@@ -45,7 +50,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/addTags',
       handler: function (request, reply) {
-        request.pg.tags.addTags('challenges', 2, [1, 2], function (error, added) { //eslint-disable-line
+        request.server.methods.pg.tags.addTags('challenges', 1, [1, 2],function (error, added) { //eslint-disable-line
           Hoek.assert(!error, error);
 
           return reply(added);
@@ -58,7 +63,7 @@ function init (config, callback) {
         var table = request.query.tableName;
         var id = request.query.id;
 
-        request.pg.tags.getTagsForEdit(table, id, function (error, allTags) { //eslint-disable-line
+        request.server.methods.pg.tags.getTagsForEdit(table, id, function (error, allTags) { //eslint-disable-line
           Hoek.assert(!error, error);
 
           return reply(allTags);
@@ -67,7 +72,7 @@ function init (config, callback) {
     }
     ]);
 
-    return callback(null, server, tagsPool);
+    return callback(null, server, pool);
   });
 }
 

@@ -1,0 +1,65 @@
+[{
+    "id": 1,
+    "name": "MEMBER TYPE",
+    "active": true
+}, {
+    "id": 2,
+    "name": "SECTOR/DEPARTMENT",
+    "active": true
+}, {
+    "id": 3,
+    "name": "HEADQUARTERS/LOCATION (USER & ORG)",
+    "active": true
+}, {
+    "id": 4,
+    "name": "ENERGY",
+    "active": true
+}, {
+    "id": 5,
+    "name": "BUSINESS",
+    "active": true
+}, {
+    "id": 6,
+    "name": "EDUCATION",
+    "active": true
+}, {
+    "id": 7,
+    "name": "DESIGN",
+    "active": true
+}, {
+    "id": 8,
+    "name": "ECONOMICS",
+    "active": true
+}, {
+    "id": 9,
+    "name": "BIOLOGICAL CYCLE",
+    "active": true
+}, {
+    "id": 10,
+    "name": "TECHNICAL CYCLE",
+    "active": true
+}, {
+    "id": 11,
+    "name": "CITIES",
+    "active": true
+}, {
+    "id": 12,
+    "name": "MANUFACTURING & ENGINEERING",
+    "active": true
+}, {
+    "id": 13,
+    "name": "FINANCE & LEGAL",
+    "active": true
+}, {
+    "id": 14,
+    "name": "MATERIALS",
+    "active": true
+}, {
+    "id": 15,
+    "name": "TECHNOLOGY",
+    "active": true
+}, {
+    "id": 16,
+    "name": "GOVERNMENT",
+    "active": true
+}]

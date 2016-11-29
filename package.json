@@ -1,7 +1,7 @@
 {
   "name": "tags-system",
-  "version": "1.0.5",
-  "description": "This document is a draft which contains ideas and first thoughts on how to build a reusable tags-system.",
+  "version": "1.1.1",
+  "description": "A reusable tags system.",
   "main": "lib/index.js",
   "scripts": {
     "start": "node ./example/start.js",
@@ -9,7 +9,7 @@
     "startmon": "nodemon ./example/start.js",
     "lint": "node_modules/.bin/goodparts .",
     "coverage": "istanbul check-coverage",
-    "test": "NODE_ENV=test istanbul cover tape \"./tests/*.test.js\" | node_modules/tap-spec/bin/cmd.js"
+    "test": "NODE_ENV=test istanbul cover tape \"./tests/**/*.test.js\" | node_modules/tap-spec/bin/cmd.js"
   },
   "repository": {
     "type": "git",
