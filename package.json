@@ -28,8 +28,10 @@
     "hoek": "^4.1.0",
     "istanbul": "^0.4.5",
     "pg": "^6.1.0",
+    "pg-challenges": "^2.0.4",
     "pg-escape": "^0.2.0",
     "pg-helpers": "0.0.3",
+    "pg-people": "0.0.6",
     "tape": "^4.6.2"
   },
   "devDependencies": {
