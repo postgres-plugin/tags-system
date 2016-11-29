@@ -49,14 +49,14 @@ Each member of the parent array is of the form:
   category_name: 'BIOLOGICAL CYCLE',
   tags:
   [ { tag_id: 87, tag_name: 'Agriculture',              selected: false },
-  { tag_id: 89, tag_name: 'Anaerobic digestion',      selected: false },
-  { tag_id: 91, tag_name: 'Biochemical extraction',   selected: false  }
+    { tag_id: 89, tag_name: 'Anaerobic digestion',      selected: false },
+    { tag_id: 91, tag_name: 'Biochemical extraction',   selected: false  }
 ]
 }
 ```
 The categories array and the inner tags array are ordered alphabetically.
 If no categories or tags are found, it will return an empty array.
-Selected will always be false when using _getAllActive_
+"selected" will always be false when using _getAllActive_
 
 
 
