@@ -4,13 +4,13 @@ var test = require('tape');
 var getTagsForEdit = require('../../lib/queries/get-tags-for-edit.js');
 
 var expectedQuery = 'SELECT '
- + 'CASE WHEN tags_challenges.challenges_id = 1 THEN TRUE ELSE FALSE END '
+ + 'CASE WHEN tags_challenges.challenges_id = 2 THEN TRUE ELSE FALSE END '
  + 'AS selected, '
  + 'tags.id AS tag_id, tags.name AS tag_name, '
  + 'categories.name AS category_name, categories.id AS category_id '
  + 'FROM tags_challenges '
  + 'RIGHT OUTER JOIN tags ON '
- + 'tags_challenges.challenges_id = 1 '
+ + 'tags_challenges.challenges_id = 2 '
  + 'AND tags_challenges.tags_id = tags.id '
  + 'LEFT OUTER JOIN tags_categories ON '
  + 'tags.id = tags_categories.tags_id '
@@ -22,7 +22,7 @@ var expectedQuery = 'SELECT '
  + 'categories.name, tags.name;';
 
 test('Get all tags for edit challenge query', function (t) {
-  t.equal(getTagsForEdit('challenges', 1), expectedQuery,
-    'getTagsForEdit(\'challenges\', 1) returns a correct query');
+  t.equal(getTagsForEdit('challenges', 2), expectedQuery,
+    'getTagsForEdit(\'challenges\', 2) returns a correct query');
   t.end();
 });

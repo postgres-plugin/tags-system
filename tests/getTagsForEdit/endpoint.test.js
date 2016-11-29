@@ -11,7 +11,7 @@ test('pg.tags.getTagsForEdit function gives with selected: true', function (t) {
       return t.fail(err);
     }
 
-    return server.inject({ url: '/getTagsForEdit?tableName=challenges&id=1' },
+    return server.inject({ url: '/getTagsForEdit?tableName=challenges&id=2' },
     function (response) {
       var allTags = response.result;
 
@@ -22,6 +22,7 @@ test('pg.tags.getTagsForEdit function gives with selected: true', function (t) {
       var memberType = allTags.filter(function (cat) { //eslint-disable-line
         return cat.category_name === 'MEMBER TYPE';
       });
+
       t.ok(memberType[0].tags[1].selected, 'Corporate tag is selected');
 
       return pool.end(function () { // eslint-disable-line
