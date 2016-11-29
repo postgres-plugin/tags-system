@@ -33,7 +33,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/',
       handler: function (request, reply) {
-        request.pg.tags.getTags(function (error, listTags) { //eslint-disable-line
+        request.server.methods.pg.tags.getTags(function (error, listTags) { //eslint-disable-line
           return reply(listTags);
         });
       }
@@ -41,7 +41,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/getAllActive',
       handler: function (request, reply) {
-        request.pg.tags.getAllActive(function (error, allTags) { //eslint-disable-line
+        request.server.methods.pg.tags.getAllActive(function (error, allTags) { //eslint-disable-line
           return reply(allTags);
         });
       }
@@ -49,7 +49,7 @@ function init (config, callback) {
       method: 'GET',
       path: '/addTags',
       handler: function (request, reply) {
-        request.pg.tags.addTags('challenges', 1, [1, 2],function (error, added) { //eslint-disable-line
+        request.server.methods.pg.tags.addTags('challenges', 1, [1, 2],function (error, added) { //eslint-disable-line
           return reply(added);
         });
       }
