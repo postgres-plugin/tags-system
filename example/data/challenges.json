@@ -2,7 +2,6 @@
   {
     "title": "Challenge Number 1",
     "description": "What can I...?",
-    "date": 1479491066104,
     "org_id": 1,
     "creator_id": 3,
     "active": false
@@ -10,7 +9,6 @@
   {
     "title": "Challenge Number 2",
     "description": "How can I...?",
-    "date": 1479491066104,
     "org_id": 1,
     "creator_id": 3,
     "active": true
@@ -18,7 +16,6 @@
   {
     "title": "Challenge Number 3",
     "description": "Where can I...?",
-    "date": 1479491066104,
     "org_id": 1,
     "creator_id": 3,
     "active": true
@@ -26,7 +23,6 @@
   {
     "title": "Challenge Number 4",
     "description": "Who should I...?",
-    "date": 1479491066104,
     "org_id": 2,
     "creator_id": 4,
     "active": true
@@ -34,7 +30,6 @@
   {
     "title": "Challenge Number 5",
     "description": "How have...?",
-    "date": 1479491066104,
     "org_id": 2,
     "creator_id": 4,
     "active": true
@@ -42,7 +37,6 @@
   {
     "title": "Challenge Number 6",
     "description": "Is there a way to...?",
-    "date": 1479491066104,
     "org_id": 3,
     "creator_id": 5,
     "active": true
@@ -50,7 +44,6 @@
   {
     "title": "Challenge Number 7",
     "description": "Is it possible to...?",
-    "date": 1479491066104,
     "org_id": 4,
     "creator_id": 6,
     "active": true
@@ -58,7 +51,6 @@
   {
     "title": "Ice Bucket",
     "description": "How much ice?",
-    "date": 1479491066104,
     "org_id": 2,
     "creator_id": 3,
     "active": false
