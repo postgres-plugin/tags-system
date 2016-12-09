@@ -40,6 +40,11 @@ The tags-system plugin take also an option where the content of these tables can
 ```
 
 # Functions
+### _addTags(tableName, itemId, tagIds, cb)_
+tableName = 'organisations' or 'challenges'
+itemId represents the id of the org or challenge you want to add tags to
+tagIds = an array of all tag ids you now want related to the given org/challenge
+
 
 ### _getAllActive(cb)_
 returns a parent array of active categories containing child arrays of active child tags.
