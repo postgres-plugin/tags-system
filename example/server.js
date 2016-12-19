@@ -9,13 +9,9 @@ var pg = require('pg');
 var pgChallenges = require('pg-challenges');
 var pgPeople = require('pg-people');
 
-var tagsData = require('./data/tags.json');
-var categoriesData = require('./data/categories.json');
-var peopleData = require('./data/people.json');
-var organisationsData = require('./data/organisations.json');
-var tagsOrgsData = require('./data/tags_organisations.json');
-var challengesData = require('./data/challenges.json');
-var tagsChallengesData = require('./data/tags_challenges.json');
+
+var data = require('ce100-mock-data');
+
 
 function init (config, callback) {
   var server = new Hapi.Server();
@@ -23,22 +19,22 @@ function init (config, callback) {
 
   var optionsTags = {
     reset: true,
-    tags: tagsData,
-    categories: categoriesData,
+    tags: data.tags,
+    categories: data.categories,
     pool: pool
   };
   var optionsPeople = {
     pool: pool,
     reset: true,
-    people: peopleData,
-    organisations: organisationsData,
-    tags_organisations: tagsOrgsData
+    people: data.people,
+    organisations: data.organisations,
+    tags_organisations: data.tags_organisations
   };
   var optionsChallenges = {
     pool: pool,
     reset: true,
-    challenges: challengesData,
-    tags_challenges: tagsChallengesData
+    challenges: data.challenges,
+    tags_challenges: data.tags_challenges
   };
 
   pool.on('error', function () {
