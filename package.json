@@ -1,6 +1,6 @@
 {
   "name": "tags-system",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "A reusable tags system.",
   "main": "lib/index.js",
   "scripts": {
@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/SimonLab/tags-system#readme",
   "dependencies": {
+    "ce100-mock-data": "^1.0.4",
     "env2": "^2.1.1",
     "hapi": "^15.2.0",
     "hoek": "^4.1.0",
